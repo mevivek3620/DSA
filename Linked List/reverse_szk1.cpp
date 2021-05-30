@@ -3,7 +3,7 @@
 //    The remaining nodes are expected to be as given.
 
 ListNode* reverseKGroup(ListNode* head, int k) {
-        ListNode* temp;
+        ListNode* temp = head;
         int cnt = 0;
         while(temp != NULL){
             cnt++;
