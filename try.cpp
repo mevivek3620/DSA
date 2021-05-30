@@ -22,13 +22,9 @@
 #define flush fflush(stdout)
 #define endc "\n"
 #define MAX 100003
-#define N 10003
-
 using namespace std;
 
 vi prime;
-// int ans[N];
-// unordered_set<ll>ans;
 // prime numbers till n
 void prime_numbers(int n) 
 {
@@ -81,34 +77,41 @@ void swap1(int* x,int* y)
     *y = temp;
 }
 
-
-
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int t;cin>>t;
-    while(t--){
+    while(t--)
+    {
         int n;cin>>n;
-        // set<int>s1,s2;
-        vi x(n+1),y(n+1);
-        f(i,1,n+1){
-            cin>>x[i]>>y[i];
-            // s1.insert(x[i]);
-            // s2.insert(y[i]);
+        vi a(n),cnt(3,0);
+        f(i,0,n)cin>>a[i];
+        f(i,0,n){
+            cnt[a[i]%3]++;
         }
-        sort(all(x));
-        sort(all(y));
-
-        if(n&1){
-            cout<<1<<endl;
-            continue;
+        // 0 -->> 1
+        // 1-- >> 2   
+        // 2 --->> 0
+        int req = n/3,val = 0;
+        f(i,0,3){
+            cout<<cnt[i]<<endl;
+            if(cnt[i] == req)continue;
+            else if(cnt[i] < req){
+                int need = req-cnt[i];
+                if(cnt[(i-1+n)%n] > need){
+                    val += need;
+                    cnt[(i-1+n)%n] -= need; 
+                    cnt[i] = req;
+                }
+                else{
+                    val += need;
+                    cnt[(i-2+n)%n] -= need;
+                    cnt[i] = 2*req;
+                }
+            }
         }
-        ll cnt1 = 0,cnt2= 0;
-        cnt1 = abs(x[n/2+1]-x[n/2])+1;
-        cnt2 = abs(y[n/2+1]-y[(n)/2])+1;
-
-        cout<<1LL*cnt1*cnt2<<endl;
+        cout<<val<<endl;
     }
     // to find the ceil of x/y  ===>>> (x+y-1)/y
     // Always take each variable long long

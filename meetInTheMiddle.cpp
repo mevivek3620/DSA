@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+// #include <bits/stdc++.h>
 #include <iostream>
 #include <vector>
 #define ll long long
@@ -22,13 +22,9 @@
 #define flush fflush(stdout)
 #define endc "\n"
 #define MAX 100003
-#define N 10003
-
 using namespace std;
 
 vi prime;
-// int ans[N];
-// unordered_set<ll>ans;
 // prime numbers till n
 void prime_numbers(int n) 
 {
@@ -71,50 +67,21 @@ void find_spf()
             }
         }
     }
+}
+
+void solveSubsetSum(vi &a,int n,int S){
     
 }
-
-void swap1(int* x,int* y)
-{
-    int temp = *x;
-    *x = *y;
-    *y = temp;
-}
-
 
 
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int t;cin>>t;
-    while(t--){
-        int n;cin>>n;
-        // set<int>s1,s2;
-        vi x(n+1),y(n+1);
-        f(i,1,n+1){
-            cin>>x[i]>>y[i];
-            // s1.insert(x[i]);
-            // s2.insert(y[i]);
-        }
-        sort(all(x));
-        sort(all(y));
-
-        if(n&1){
-            cout<<1<<endl;
-            continue;
-        }
-        ll cnt1 = 0,cnt2= 0;
-        cnt1 = abs(x[n/2+1]-x[n/2])+1;
-        cnt2 = abs(y[n/2+1]-y[(n)/2])+1;
-
-        cout<<1LL*cnt1*cnt2<<endl;
-    }
-    // to find the ceil of x/y  ===>>> (x+y-1)/y
-    // Always take each variable long long
-    
-    // If first condition satisfies then the compiler
-    // won't go to the other condition
-  
+    int n,S;
+    cin>>n>>S;
+    vi a(n);
+    f(i,0,n)cin>>a[i];
+    solveSubsetSum(a,n,S);
     return 0;
 }

@@ -3,19 +3,19 @@
 
 string getSmallestString(int n, int k) {
         // if(n == 1)return k+'a';
-        string ans;
-        for(int i=n-1;i>=0;i--)
-        {
-            int temp = k-i;
-            if(temp >= 26){
-                ans += 'z';
-                k -= 26;
-            }
-            else {
-                ans += ('a'+temp-1);
-                k -= (temp);
-            }
+    string ans;
+    for(int i=n-1;i>=0;i--)
+    {
+        int temp = k-i;
+        if(temp >= 26){
+            ans += 'z';
+            k -= 26;
         }
-        reverse(ans.begin(),ans.end());
-        return ans;
+        else {
+            ans += ('a'+temp-1);
+            k -= (temp);
+        }
     }
+    reverse(ans.begin(),ans.end());
+    return ans;
+}
